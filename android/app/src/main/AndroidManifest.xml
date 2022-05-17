@@ -1,7 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.quotedemo">
       <uses-permission android:name="android.permission.INTERNET"/> <!-- Add this -->
-<uses-permission android:name="android.permission.VIBRATE"/>
 
    <application
         android:label="Prompt"
