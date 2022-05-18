@@ -4,7 +4,18 @@ import 'package:quotedemo/widget/chipe_widget.dart';
 import 'package:quotedemo/widget/custom_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+TextEditingController controller = TextEditingController();
+void insert(String content) {
+  var text = controller.text;
+  var pos = controller.selection.start;
+  controller.value = TextEditingValue(
+    text: content,
+    selection: TextSelection.collapsed(offset: pos + content.length),
+  );
+}
+
 showAlertDialog(BuildContext context) {
+  controller.clear();
   var maxLength = 10;
   var textLength = 0;
   AlertDialog alert = AlertDialog(
@@ -47,17 +58,23 @@ showAlertDialog(BuildContext context) {
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
+              padding: const EdgeInsets.only(bottom: 10),
               decoration: BoxDecoration(
                   color: ColorsProvider.TEXTAREA_COLOR,
                   borderRadius: BorderRadius.circular(14)),
               child: TextFormField(
-                minLines: 8,
+                controller: controller,
+                minLines: 7,
                 maxLines: 15,
                 maxLength: 250,
-                onChanged: (value) {
-                  textLength = value.length;
-                },
+                onChanged: (value) {},
                 decoration: InputDecoration(
+                  contentPadding: const EdgeInsets.all(20),
+                  hintText: "I am grateful for...",
+                  hintStyle: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16.sp,
+                  ),
                   counterStyle: TextStyle(
                       color: ColorsProvider.UNSELECTED_COLOR,
                       fontWeight: FontWeight.w500,
@@ -89,21 +106,34 @@ showAlertDialog(BuildContext context) {
               height: 8.h,
             ),
             Row(
-              children: const [
-                ChipWidget(name: "mother nature"),
-                ChipWidget(name: "the sun shining bright"),
+              children: [
+                GestureDetector(
+                    onTap: () {
+                      insert("mother nature");
+                    },
+                    child: const ChipWidget(name: "mother nature")),
+                GestureDetector(
+                    onTap: () {
+                      insert("the sun shining bright");
+                    },
+                    child: const ChipWidget(name: "the sun shining bright")),
               ],
             ),
             Row(
-              children: const [
-                ChipWidget(name: "my business doing well and growing"),
+              children: [
+                GestureDetector(
+                    onTap: () {
+                      insert("my business doing well and growing");
+                    },
+                    child: const ChipWidget(
+                        name: "my business doing well and growing")),
               ],
             ),
             SizedBox(
               height: 26.h,
             ),
             CustomButton(
-                text: "Add more cards",
+                text: "Done",
                 function: () {
                   Navigator.pop(context);
                 }),

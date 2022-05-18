@@ -81,7 +81,6 @@ class BottomNavigationBarWidget extends StatelessWidget {
       child: BottomNavigationBar(
           currentIndex: controller.selectedIndex.value,
           onTap: (index) {
-            print(controller.canVibrate);
             controller.onItemTapped(index);
           },
           enableFeedback: true,
