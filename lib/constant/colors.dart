@@ -12,6 +12,7 @@ class ColorsProvider {
   static Color APP_GREY_POINT = const Color(0xffDFDFDF);
   static Color APP_GREEN_POINT = const Color(0xff639B6D);
   static Color APP_BLUE = const Color(0xff377690);
+  static Color BUTTON_GREY = const Color(0xffEFF0F1);
 
   static List<Color> GREDIENT_COLOR = const [
     Color(0xff3C8469),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:quotedemo/constant/colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -30,6 +31,71 @@ class CustomButton extends StatelessWidget {
               color: Colors.white),
         )),
       ),
+    );
+  }
+}
+
+class PrimayButton extends StatelessWidget {
+  final String? text;
+  final VoidCallback? function;
+  const PrimayButton({
+    Key? key,
+    this.function,
+    this.text,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: function,
+      child: Container(
+          child: Center(
+              child: Text(
+            text ?? "Let’s get started",
+            style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w600,
+                fontSize: 15.sp),
+          )),
+          width: Get.width,
+          height: 51.h,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8.r),
+            color: ColorsProvider.APP_GREEN_POINT,
+          )),
+    );
+  }
+}
+
+class SecondaryButton extends StatelessWidget {
+  final String? text;
+  final VoidCallback? function;
+  const SecondaryButton({
+    Key? key,
+    this.function,
+    this.text,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: function,
+      child: Container(
+          child: Center(
+              child: Text(
+            text ?? "Let’s get started",
+            style: TextStyle(
+                color: ColorsProvider.APP_GREEN_POINT,
+                fontWeight: FontWeight.w600,
+                fontSize: 15.sp),
+          )),
+          width: Get.width,
+          height: 51.h,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8.r),
+              border: Border.all(
+                color: ColorsProvider.APP_GREEN_POINT,
+              ))),
     );
   }
 }

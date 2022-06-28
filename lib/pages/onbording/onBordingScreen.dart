@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quotedemo/constant/colors.dart';
-import 'package:quotedemo/gen/assets.gen.dart';
+import 'package:quotedemo/constant/go.dart';
 import 'package:quotedemo/gen/fonts.gen.dart';
+import 'package:quotedemo/pages/onbording/get_start_screen.dart';
 import 'package:quotedemo/pages/onbording/onBordingController.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:quotedemo/widget/custom_button.dart';
+import 'package:quotedemo/widget/eclip_logo.dart';
 
 class OnBordingScreen extends StatefulWidget {
   const OnBordingScreen({Key? key}) : super(key: key);
@@ -21,21 +24,9 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
     return Scaffold(
         bottomNavigationBar: Padding(
           padding: EdgeInsets.fromLTRB(20.w, 20.h, 20.w, 20.h),
-          child: Container(
-              child: Center(
-                  child: Text(
-                "Let’s get started",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 15.sp),
-              )),
-              width: Get.width,
-              height: 51.h,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8.r),
-                color: ColorsProvider.APP_GREEN_POINT,
-              )),
+          child: PrimayButton(function: () {
+            Go.to(context, const GetStartScreen());
+          }),
         ),
         backgroundColor: Colors.white,
         body: SafeArea(
@@ -51,24 +42,7 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Stack(
-                        children: [
-                          Image.asset(
-                            Assets.images.eclips.path,
-                            width: 246.w,
-                          ),
-                          Positioned(
-                            top: 10.h,
-                            left: 72.w,
-                            right: 72.w,
-                            bottom: 40.h,
-                            child: Image.asset(
-                              Assets.images.logoHorizontal.path,
-                              width: 109.w,
-                            ),
-                          ),
-                        ],
-                      ),
+                      const EclipeLogo(),
                       SizedBox(
                         height: 95.59.h,
                       ),
