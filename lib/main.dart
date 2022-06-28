@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:quotedemo/gen/fonts.gen.dart';
 import 'package:quotedemo/pages/navigation_handler/navigation_handler_binding.dart';
-import 'package:quotedemo/pages/navigation_handler/navigation_handler_view.dart';
+import 'package:quotedemo/pages/splash_screen/splash_screen.dart';
 
 main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(fontFamily: FontFamily.poppins),
             debugShowCheckedModeBanner: false,
             initialBinding: NavigationHandlerBinding(),
-            home: const NavigationHandlerPage(),
+            home: const SplashScreen(),
           );
         });
   }

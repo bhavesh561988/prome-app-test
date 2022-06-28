@@ -30,13 +30,39 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/eclips.png
+  AssetGenImage get eclips => const AssetGenImage('assets/images/eclips.png');
+
+  /// File path: assets/images/logo.png
+  AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
+
   /// File path: assets/images/logo_gredient.png
   AssetGenImage get logoGredient =>
       const AssetGenImage('assets/images/logo_gredient.png');
 
+  /// File path: assets/images/logo_horizontal.png
+  AssetGenImage get logoHorizontal =>
+      const AssetGenImage('assets/images/logo_horizontal.png');
+
   /// File path: assets/images/logo_white.png
   AssetGenImage get logoWhite =>
       const AssetGenImage('assets/images/logo_white.png');
+
+  /// File path: assets/images/on_bording_one.png
+  AssetGenImage get onBordingOne =>
+      const AssetGenImage('assets/images/on_bording_one.png');
+
+  /// File path: assets/images/on_bording_three.png
+  AssetGenImage get onBordingThree =>
+      const AssetGenImage('assets/images/on_bording_three.png');
+
+  /// File path: assets/images/on_bording_two.png
+  AssetGenImage get onBordingTwo =>
+      const AssetGenImage('assets/images/on_bording_two.png');
+
+  /// File path: assets/images/on_boring_done.png
+  AssetGenImage get onBoringDone =>
+      const AssetGenImage('assets/images/on_boring_done.png');
 }
 
 class Assets {
