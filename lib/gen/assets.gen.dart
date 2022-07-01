@@ -14,8 +14,20 @@ class $AssetsFontsGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/check.png
+  AssetGenImage get check => const AssetGenImage('assets/icons/check.png');
+
+  /// File path: assets/icons/email.png
+  AssetGenImage get email => const AssetGenImage('assets/icons/email.png');
+
   /// File path: assets/icons/globe.png
   AssetGenImage get globe => const AssetGenImage('assets/icons/globe.png');
+
+  /// File path: assets/icons/google.png
+  AssetGenImage get google => const AssetGenImage('assets/icons/google.png');
+
+  /// File path: assets/icons/lock.png
+  AssetGenImage get lock => const AssetGenImage('assets/icons/lock.png');
 
   /// File path: assets/icons/search.png
   AssetGenImage get search => const AssetGenImage('assets/icons/search.png');
@@ -25,6 +37,10 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/user.png
   AssetGenImage get user => const AssetGenImage('assets/icons/user.png');
+
+  /// File path: assets/icons/usertext.png
+  AssetGenImage get usertext =>
+      const AssetGenImage('assets/icons/usertext.png');
 }
 
 class $AssetsImagesGen {
