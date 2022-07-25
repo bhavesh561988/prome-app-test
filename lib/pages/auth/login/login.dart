@@ -108,7 +108,7 @@ class LoginScreen extends StatelessWidget {
                                 function: () {
                                   loginController.validateForm(context);
                                 },
-                                text: "Create An Account"),
+                                text: "Login"),
                             const SizedBox(
                               height: 20,
                             ),

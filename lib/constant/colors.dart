@@ -15,8 +15,8 @@ class ColorsProvider {
   static Color BUTTON_GREY = const Color(0xffEFF0F1);
 
   static List<Color> GREDIENT_COLOR = const [
-    Color(0xff3C8469),
-    Color(0xff21263E),
+    Color(0xff639B6D),
+    Color(0xff377690),
   ];
   static List<Color> SPLASH_GREDIENT_COLOR = const [
     Color(0xff3C8469),

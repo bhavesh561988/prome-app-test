@@ -79,6 +79,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/on_boring_done.png
   AssetGenImage get onBoringDone =>
       const AssetGenImage('assets/images/on_boring_done.png');
+
+  /// File path: assets/images/quotes.png
+  AssetGenImage get quotes => const AssetGenImage('assets/images/quotes.png');
 }
 
 class Assets {

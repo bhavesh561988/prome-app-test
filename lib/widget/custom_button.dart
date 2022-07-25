@@ -35,6 +35,52 @@ class CustomButton extends StatelessWidget {
   }
 }
 
+class PrimayIconButton extends StatelessWidget {
+  final String? text;
+  final VoidCallback? function;
+  const PrimayIconButton({
+    Key? key,
+    this.function,
+    this.text,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: function,
+      child: Container(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.ios_share_outlined,
+                color: Colors.white,
+                size: 15.sp,
+              ),
+              const SizedBox(
+                width: 5,
+              ),
+              Center(
+                  child: Text(
+                text ?? "Let’s get started",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 15.sp),
+              )),
+            ],
+          ),
+          width: Get.width,
+          height: 51.h,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8.r),
+            color: ColorsProvider.APP_GREEN_POINT,
+          )),
+    );
+  }
+}
+
 class PrimayButton extends StatelessWidget {
   final String? text;
   final VoidCallback? function;

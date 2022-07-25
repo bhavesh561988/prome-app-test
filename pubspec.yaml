@@ -28,7 +28,6 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   animate_do: ^2.1.0
-  calendar_timeline: ^1.0.5
   carousel_slider: ^4.1.1
   cupertino_icons: ^1.0.2
   flutter:
@@ -37,6 +36,10 @@ dependencies:
   get: ^4.6.1
   google_fonts: ^2.3.2
   intl: ^0.17.0
+  path_provider: ^2.0.11
+  screenshot: ^1.2.3
+  scrollable_positioned_list: ^0.3.2
+  share: ^2.0.4
   timelines: ^0.1.0
 
 dev_dependencies:
