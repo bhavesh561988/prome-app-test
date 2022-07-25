@@ -181,31 +181,20 @@ CarouselSlider QuiteSliderWidget() {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(14),
                     gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
                       colors: ColorsProvider.GREDIENT_COLOR,
                     )),
                 child: Padding(
-                  padding:
-                      EdgeInsets.only(left: 36.w, top: 28.55.h, right: 36.w),
+                  padding: EdgeInsets.only(left: 36.w, right: 36.w),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(
-                        height: 14.h,
-                      ),
-                      Image.asset(
-                        Assets.images.logoWhite.path,
-                        height: 47.89.h,
-                        width: 28.51,
-                      ),
-                      SizedBox(
-                        height: 9.18.h,
-                      ),
                       Text(
                         i["quote"],
                         style: TextStyle(
+                            fontFamily: FontFamily.poppins,
                             color: Colors.white,
                             fontWeight: FontWeight.w500,
                             fontSize: 18.sp),
