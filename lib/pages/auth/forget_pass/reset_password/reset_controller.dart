@@ -4,12 +4,11 @@ import 'package:get/state_manager.dart';
 import 'package:quotedemo/gen/fonts.gen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class RegisterController extends GetxController {
+class ResetController extends GetxController {
   TextEditingController firstNameController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   RxBool isFormValidate = false.obs;
-  RxBool isFirstNameValidate = false.obs;
-  RxBool isLastNameValidate = false.obs;
+
   RxBool isEmailNameValidate = false.obs;
   RxBool isPassNameValidate = false.obs;
 
@@ -24,13 +23,6 @@ class RegisterController extends GetxController {
     if (formKey.currentState?.validate() == true) {
       print("valid");
     } else {
-      print(isLastNameValidate.value);
-      if (isFirstNameValidate.value == false) {
-        showOverlay(context, "First Name");
-      }
-      if (isLastNameValidate.value == false) {
-        showOverlay(context, "Last Name");
-      }
       if (isEmailNameValidate.value == false) {
         showOverlay(context, "Email");
       }
@@ -40,41 +32,17 @@ class RegisterController extends GetxController {
     }
   }
 
-  OverlayEntry? firstNameEntry;
-  OverlayEntry? lastNameEntry;
   OverlayEntry? emailEntry;
   OverlayEntry? passEntry;
   showOverlay(context, type) {
     final overlay1 = Overlay.of(context);
 
-    if (type == "First Name") {
-      firstNameEntry = OverlayEntry(builder: (context) {
-        return OverLayContent(
-          entry: firstNameEntry,
-          type: "First Name",
-          top: MediaQuery.of(context).size.height * 0.1,
-        );
-      });
-      overlay1!.insert(
-        firstNameEntry!,
-      );
-    }
-    if (type == "Last Name") {
-      lastNameEntry = OverlayEntry(builder: (context) {
-        return OverLayContent(
-          entry: lastNameEntry,
-          type: "Last Name",
-          top: MediaQuery.of(context).size.height * 0.17,
-        );
-      });
-      overlay1!.insert(lastNameEntry!);
-    }
     if (type == "Email") {
       emailEntry = OverlayEntry(builder: (context) {
         return OverLayContent(
           entry: emailEntry,
           type: "Email",
-          top: MediaQuery.of(context).size.height * 0.24,
+          top: MediaQuery.of(context).size.height * 0.10,
         );
       });
       overlay1!.insert(emailEntry!);
@@ -84,7 +52,7 @@ class RegisterController extends GetxController {
         return OverLayContent(
           entry: passEntry,
           type: "Password",
-          top: MediaQuery.of(context).size.height * 0.31,
+          top: MediaQuery.of(context).size.height * 0.18,
         );
       });
       overlay1!.insert(passEntry!);

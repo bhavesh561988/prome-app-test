@@ -5,68 +5,20 @@ import 'package:quotedemo/constant/colors.dart';
 import 'package:quotedemo/constant/go.dart';
 import 'package:quotedemo/gen/assets.gen.dart';
 import 'package:quotedemo/gen/fonts.gen.dart';
-import 'package:quotedemo/pages/auth/Register/register_controller.dart';
-import 'package:quotedemo/pages/auth/login/login.dart';
-import 'package:quotedemo/widget/custom_button.dart';
+import 'package:quotedemo/pages/auth/forget_pass/forgetpassword.dart';
 
-class RegisterScreen extends StatelessWidget {
-  const RegisterScreen({Key? key}) : super(key: key);
+import '../../../widget/custom_button.dart';
+import 'login_controller.dart';
+
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final registerController = RegisterController();
+    final loginController = LoginController();
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w),
-        child: SizedBox(
-          height: 100.h,
-          child: Column(
-            children: [
-              PrimayButton(
-                  function: () {
-                    registerController.validateForm(context);
-                  },
-                  text: "Create An Account"),
-              SizedBox(
-                height: 15.h,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    "Already A Member?",
-                    style: TextStyle(
-                        color: ColorsProvider.UNSELECTED_COLOR,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 14.sp),
-                  ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Go.to(context, const LoginScreen());
-                    },
-                    child: Text(
-                      "Log In",
-                      style: TextStyle(
-                          color: ColorsProvider.PRIMARY_COLOR,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 14.sp),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                ],
-              )
-            ],
-          ),
-        ),
-      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: SizedBox(
@@ -77,14 +29,117 @@ class RegisterScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 70.h,
+                  height: 140.h,
                 ),
                 Text(
-                  "Create An Account",
+                  "Welcome Back",
                   style: TextStyle(
                       fontFamily: FontFamily.poppins,
                       fontSize: 22.sp,
                       fontWeight: FontWeight.w600),
+                ),
+                SizedBox(
+                  height: 8.h,
+                ),
+                Text(
+                  "Log into your account",
+                  style: TextStyle(
+                      color: const Color(0xff757C90),
+                      fontFamily: FontFamily.poppins,
+                      fontSize: 15.sp,
+                      fontWeight: FontWeight.w500),
+                ),
+                SizedBox(
+                  height: 20.h,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 20.w, right: 20.w),
+                  child: Form(
+                    key: loginController.formKey,
+                    child: Obx(() => Column(
+                          children: [
+                            CustomInputField(
+                              image: Assets.icons.email.path,
+                              onChanged: (value) {
+                                if (value.isNotEmpty &&
+                                    GetUtils.isEmail(value)) {
+                                  loginController.isEmailNameValidate.value =
+                                      true;
+                                } else {
+                                  loginController.isEmailNameValidate.value =
+                                      false;
+                                }
+                              },
+                              controller: loginController.firstNameController,
+                              isValidate:
+                                  loginController.isEmailNameValidate.value,
+                              hint: "Email",
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please Enter Email';
+                                } else if (!GetUtils.isEmail(value)) {
+                                  return 'Please Enter valid Email';
+                                } else {
+                                  return null;
+                                }
+                              },
+                            ),
+                            SizedBox(
+                              height: 10.h,
+                            ),
+                            CustomPasswordField(
+                              image: Assets.icons.lock.path,
+                              onChanged: (value) {},
+                              controller: loginController.firstNameController,
+                              isValidate:
+                                  loginController.isPassNameValidate.value,
+                              hint: "Password",
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter password';
+                                }
+                                return null;
+                              },
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            PrimayButton(
+                                function: () {
+                                  loginController.validateForm(context);
+                                },
+                                text: "Create An Account"),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Go.to(context, const ForgetPassword());
+                              },
+                              child: Text(
+                                "Forgot Password",
+                                style: TextStyle(
+                                    color: ColorsProvider.UNSELECTED_COLOR,
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 14.sp),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                          ],
+                        )),
+                  ),
+                ),
+                SizedBox(
+                  height: 20.h,
+                ),
+                Text(
+                  "OR",
+                  style: TextStyle(
+                      color: ColorsProvider.UNSELECTED_COLOR,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14.sp),
                 ),
                 SizedBox(
                   height: 20.h,
@@ -122,123 +177,6 @@ class RegisterScreen extends StatelessWidget {
                 SizedBox(
                   height: 20.h,
                 ),
-                Text(
-                  "OR",
-                  style: TextStyle(
-                      color: ColorsProvider.UNSELECTED_COLOR,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14.sp),
-                ),
-                SizedBox(
-                  height: 20.h,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: 20.w, right: 20.w),
-                  child: Form(
-                    key: registerController.formKey,
-                    child: Obx(() => Column(
-                          children: [
-                            CustomInputField(
-                              image: Assets.icons.user.path,
-                              onChanged: (value) {
-                                if (value.isNotEmpty && value.length > 2) {
-                                  registerController.isFirstNameValidate.value =
-                                      true;
-                                } else {
-                                  registerController.isFirstNameValidate.value =
-                                      false;
-                                }
-                              },
-                              controller:
-                                  registerController.firstNameController,
-                              isValidate:
-                                  registerController.isFirstNameValidate.value,
-                              hint: "First Name",
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return '';
-                                }
-                                return null;
-                              },
-                            ),
-                            SizedBox(
-                              height: 10.h,
-                            ),
-                            CustomInputField(
-                              image: Assets.icons.user.path,
-                              onChanged: (value) {
-                                if (value.isNotEmpty && value.length > 2) {
-                                  registerController.isLastNameValidate.value =
-                                      true;
-                                } else {
-                                  registerController.isLastNameValidate.value =
-                                      false;
-                                }
-                              },
-                              controller:
-                                  registerController.firstNameController,
-                              isValidate:
-                                  registerController.isLastNameValidate.value,
-                              hint: "Last Name",
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return '';
-                                }
-                                return null;
-                              },
-                            ),
-                            SizedBox(
-                              height: 10.h,
-                            ),
-                            CustomInputField(
-                              image: Assets.icons.email.path,
-                              onChanged: (value) {
-                                if (value.isNotEmpty &&
-                                    GetUtils.isEmail(value)) {
-                                  registerController.isEmailNameValidate.value =
-                                      true;
-                                } else {
-                                  registerController.isEmailNameValidate.value =
-                                      false;
-                                }
-                              },
-                              controller:
-                                  registerController.firstNameController,
-                              isValidate:
-                                  registerController.isEmailNameValidate.value,
-                              hint: "Email",
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please Enter Email';
-                                } else if (!GetUtils.isEmail(value)) {
-                                  return 'Please Enter valid Email';
-                                } else {
-                                  return null;
-                                }
-                              },
-                            ),
-                            SizedBox(
-                              height: 10.h,
-                            ),
-                            CustomPasswordField(
-                              image: Assets.icons.lock.path,
-                              onChanged: (value) {},
-                              controller:
-                                  registerController.firstNameController,
-                              isValidate:
-                                  registerController.isPassNameValidate.value,
-                              hint: "Password",
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please enter password';
-                                }
-                                return null;
-                              },
-                            ),
-                          ],
-                        )),
-                  ),
-                )
               ],
             ),
           ),

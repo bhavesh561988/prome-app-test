@@ -5,6 +5,7 @@ import 'package:quotedemo/constant/go.dart';
 import 'package:quotedemo/gen/assets.gen.dart';
 import 'package:quotedemo/gen/fonts.gen.dart';
 import 'package:quotedemo/pages/auth/Register/register.dart';
+import 'package:quotedemo/pages/auth/login/login.dart';
 import 'package:quotedemo/widget/custom_button.dart';
 import 'package:quotedemo/widget/eclip_logo.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,7 +33,7 @@ class GetStartScreen extends StatelessWidget {
               SecondaryButton(
                   text: "Log In",
                   function: () {
-                    Go.to(context, const GetStartScreen());
+                    Go.to(context, const LoginScreen());
                   }),
             ],
           ),
